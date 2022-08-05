@@ -76,5 +76,29 @@ class StoreController extends ApiParentController
         }
     }
 
+    public function setVatPercentage(Request $request): JsonResponse
+    {
+        try {
+            //validation
+            $validator = Validator::make($request->all(), ['store_id' => 'required', 'percentage' => 'required|numeric']);
+            if ($validator->fails()) {
+                return $this->failedResponse(400, $validator->errors()->first());
+            }
+            //find the auth merchant store
+            $store = Store::where(['merchant_id'=>Auth::id(),'id'=>$request->store_id])->first();
+            if (!empty($store)){
+                if ($store->vat_included == 1){
+                    return $this->failedResponse(400,'VAT is included in product prices by default');
+                }
+                $store->vat_percentage = $request->percentage;
+                $store->save();
+                return $this->successResponse('VAT percentage is updated successfully');
+            }
+            return $this->failedResponse(400,'the merchant store is not found');
+        } catch (\Exception $e) {
+            return $this->failedResponse($e->getCode(), $e->getMessage());
+        }
+    }
+
 
 }

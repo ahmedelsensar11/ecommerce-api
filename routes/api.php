@@ -31,6 +31,7 @@ Route::middleware('auth:sanctum')->group(function (){
             Route::post('/set-store-name',[StoreController::class,'setStoreName']);
             Route::post('/update-vat-status',[StoreController::class,'updateVatStatus']);
             Route::post('/set-shipping-cost',[StoreController::class,'setShippingCost']);
+            Route::post('/set-vat-percentage',[StoreController::class,'setVatPercentage']);
         });
     });
 });
