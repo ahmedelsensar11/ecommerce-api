@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
             $user->email = 'user'.$i.'@gmail.com';
             $user->password = Hash::make('12345'.$i);
             if ($i == 3){
-                $user->name = 'Admin' ;
+                $user->name = 'Merchant' ;
                 $user->is_merchant = true ;
                 $user->email = 'merchant11@gmail.com';
             }

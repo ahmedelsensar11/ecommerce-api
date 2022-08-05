@@ -19,10 +19,21 @@ trait ApiValidation
             'is_merchant.*' => 'The is_merchant value must be 0 or 1',
         ]
     ];
+
     public $loginForm = [
         'rules' =>[
             'email' => 'required|email',
             'password' => 'required|min:5',
+        ]
+    ];
+
+    public $vatStatusForm = [
+        'rules' =>[
+            'store_id' => 'required',
+            'vat_included' => 'required|numeric|max:1',
+        ],
+        'messages'=>[
+            'vat_included.*' => 'The vat_included value must be 0 or 1',
         ]
     ];
 
