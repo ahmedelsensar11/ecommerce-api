@@ -16,16 +16,16 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=1;$i<4;$i++){
+        for ($i=1;$i<6;$i++){
             $user = new User();
             $user->name = 'User '.$i ;
             $user->phone = '+20'.$i.'2321657';
             $user->email = 'user'.$i.'@gmail.com';
             $user->password = Hash::make('12345'.$i);
-            if ($i == 3){
-                $user->name = 'Merchant' ;
+            if ($i >= 3){
+                $user->name = 'Merchant'.$i ;
                 $user->is_merchant = true ;
-                $user->email = 'merchant11@gmail.com';
+                $user->email = 'merchant1'.$i.'@gmail.com';
             }
             $user->save();
         }

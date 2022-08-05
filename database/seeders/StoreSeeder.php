@@ -15,9 +15,12 @@ class StoreSeeder extends Seeder
      */
     public function run()
     {
-        $user = new Store();
-        $user->name = 'store user 3';
-        $user->merchant_id = 3;
-        $user->save();
+        for($i=3;$i<6;$i++){
+            $user = new Store();
+            $user->name = 'store user '.$i;
+            $user->merchant_id = $i;
+            $user->save();
+        }
+
     }
 }

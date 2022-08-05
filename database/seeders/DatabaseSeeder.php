@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
         $ads->run();
         $ads = new StoreSeeder() ;
         $ads->run();
+        $ads = new ProductSeeder() ;
+        $ads->run();
     }
 
 }
