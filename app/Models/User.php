@@ -16,14 +16,8 @@ use Laravel\Sanctum\HasApiTokens;
  * @property string $email
  * @property string $phone
  * @property string $image
- * @property string $cover
- * @property string $gender
- * @property integer $otp
- * @property bool $is_admin
- * @property bool $subscribed
- * @property string $fcm_token
- * @property string $location
- * @property string $birth_date
+ * @property string $password
+ * @property bool $is_merchant
  */
 class User extends Authenticatable
 {
@@ -34,8 +28,8 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = ['name', 'email', 'phone', 'cover','image', 'subscribed', 'is_admin', 'gender', 'location', 'password', 'birth_date','otp'];
-    protected $appends = ['image_url','cover_url'];
+    protected $fillable = ['name', 'email', 'phone', 'image', 'is_merchant','password'];
+    protected $appends = ['image_url'];
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -58,50 +52,4 @@ class User extends Authenticatable
         return url(Storage::url('users/avatar/default.png'));
     }
 
-    public function getCoverUrlAttribute(): string
-    {
-        if ($this->cover != ''){
-            return url(Storage::url($this->cover));
-        }
-        return url(Storage::url('default/users/cover.png'));
-    }
-
-    public function addresses()
-    {
-        return $this->hasMany('App\Models\Address');
-    }
-
-    public function supportMessages()
-    {
-        return $this->hasMany('App\Models\Support','user_id','id');
-    }
-
-    public function products()
-    {
-        return $this->hasMany('App\Models\Product','owner_id','id');
-    }
-    public function orders()
-    {
-        return $this->hasMany('App\Models\ProductOrder','user_id','id');
-    }
-
-    public function providerRatings()
-    {
-        return $this->hasMany('App\Models\Rating','provider_id','id');
-    }
-
-    public function userRatings()
-    {
-        return $this->hasMany('App\Models\Rating','user_id','id');
-    }
-
-    public function favourites()
-    {
-        return $this->hasMany('App\Models\Favorite','user_id','id');
-    }
-
-    public function favouriteProducts()
-    {
-        return $this->belongsToMany('App\Models\Product', 'favorites', 'user_id', 'product_id');
-    }
 }

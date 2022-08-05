@@ -8,8 +8,7 @@ use Illuminate\Support\Facades\Storage;
 return new class extends Migration
 {
     public $default_img ='default/users/avatar.png';
-    public $default_cover ='default/users/cover.png';
-    public $default_name ='golden user';
+    public $default_name ='Inovola user';
     /**
      * Run the migrations.
      *
@@ -21,16 +20,10 @@ return new class extends Migration
             $table->id();
             $table->string('name')->default($this->default_name);
             $table->string('email')->unique()->nullable();
-            $table->string('phone')->unique();
+            $table->string('phone')->unique()->nullable();
             $table->string('password')->nullable();
             $table->string('image')->default($this->default_img);
-            $table->string('cover')->default($this->default_cover);
-            $table->boolean('subscribed')->default(false);
-            $table->boolean('is_admin')->default(false);
-            $table->date('birth_date')->nullable();
-            $table->string('gender')->nullable();
-            $table->integer('otp')->nullable();
-            $table->string('fcm_token')->nullable();
+            $table->boolean('is_merchant')->default(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
