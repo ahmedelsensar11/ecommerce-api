@@ -1,0 +1,16 @@
+[15-Mar-2022 11:34:20 UTC] PHP Fatal error:  Uncaught ErrorException: include(/home/qbizns/public_html/apps/laravel9-app/vendor/composer/../nunomaduro/collision/src/Adapters/Laravel/IgnitionSolutionsRepository.php): failed to open stream: No such file or directory in /home/qbizns/public_html/apps/laravel9-app/vendor/composer/ClassLoader.php:571
+Stack trace:
+#0 /home/qbizns/public_html/apps/laravel9-app/vendor/composer/ClassLoader.php(571): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'include(/home/q...', '/home/qbizns/pu...', 571, Array)
+#1 /home/qbizns/public_html/apps/laravel9-app/vendor/composer/ClassLoader.php(571): include()
+#2 /home/qbizns/public_html/apps/laravel9-app/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/qbizns/pu...')
+#3 [internal function]: Composer\Autoload\ClassLoader->loadClass('NunoMaduro\\Coll...')
+#4 /home/qbizns/public_html/apps/laravel9-app/vendor/nunomaduro/collision/src/Adapters/Laravel/CollisionServiceProvider.php(50): spl_autoload_call('NunoMaduro\\Coll...')
+#5 /home/qbizns/ in /home/qbizns/public_html/apps/laravel9-app/vendor/composer/ClassLoader.php on line 571
+[15-Mar-2022 11:34:20 UTC] PHP Fatal error:  Uncaught ErrorException: include(/home/qbizns/public_html/apps/laravel9-app/vendor/composer/../symfony/error-handler/Error/FatalError.php): failed to open stream: No such file or directory in /home/qbizns/public_html/apps/laravel9-app/vendor/composer/ClassLoader.php:571
+Stack trace:
+#0 /home/qbizns/public_html/apps/laravel9-app/vendor/composer/ClassLoader.php(571): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'include(/home/q...', '/home/qbizns/pu...', 571, Array)
+#1 /home/qbizns/public_html/apps/laravel9-app/vendor/composer/ClassLoader.php(571): include()
+#2 /home/qbizns/public_html/apps/laravel9-app/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/qbizns/pu...')
+#3 [internal function]: Composer\Autoload\ClassLoader->loadClass('Symfony\\Compone...')
+#4 /home/qbizns/public_html/apps/laravel9-app/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(220): spl_autoload_call('Symfony\\Compone...')
+#5 /home/qbizns/public_html/apps/laravel9- in /home/qbizns/public_html/apps/laravel9-app/vendor/composer/ClassLoader.php on line 571
