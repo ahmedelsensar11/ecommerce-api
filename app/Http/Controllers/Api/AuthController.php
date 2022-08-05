@@ -29,7 +29,7 @@ class AuthController extends ApiParentController
                 'phone' => $request->phone,
                 'is_merchant' => $request->is_merchant
             ]);
-            //create user token
+            //create user api token
             $token = $user->createToken($user->name . '-token')->plainTextToken;
             //response
             $response = [
@@ -44,29 +44,26 @@ class AuthController extends ApiParentController
 
     public function login(Request $request): JsonResponse
     {
-        return $this->successResponse('works');
         try {
             //validation
-            $validator = Validator::make($request->all(), ['phone' => 'required'], ['phone.required' => 'رقم الهاتف مطلوب']);
+            $validator = Validator::make($request->all(), $this->loginForm['rules']);
             if ($validator->fails()) {
                 return $this->failedResponse(400, $validator->errors()->first());
             }
-            $user = User::where('phone', $request->phone)->first();
-            if ($user == null) {
-                return $this->failedResponse(400, 'هذا الحساب غير موجود oop');
+            //check credentials
+            $credentials = ['email' => $request->email, 'password' => $request->password];
+            if (Auth::attempt($credentials)) {
+                //create user api token
+                $token = Auth::user()->createToken($request->email . '-token')->plainTextToken;
+                //response
+                $response = [
+                    'user' => Auth::user(),
+                    'token' => $token
+                ];
+                return $this->successResponse($response);
             }
-            //create user token
-            $token = $user->createToken($user->phone . '-token')->plainTextToken;
-            //send otp
-            $user->otp = 1234; //rand(1000,9999);
-            $user->save();
-            $msg = $user->otp . '%20is%20your%20Orders%20Maps%20verification%20code.Thanks';
-            //response
-            $response = [
-                'user' => $user,
-                'token' => $token
-            ];
-            return $this->successResponse($response);
+             return $this->failedResponse(400,'The provided credentials do not match our records.');
+
         } catch (\Exception $e) {
             return $this->failedResponse($e->getCode(), $e->getMessage());
         }
@@ -76,7 +73,7 @@ class AuthController extends ApiParentController
     {
         try {
             \auth()->user()->tokens()->delete();
-            return $this->successResponse('تم تسجيل الخروج');
+            return $this->successResponse('logged out');
         } catch (\Exception $e) {
             return $this->failedResponse($e->getCode(), $e->getMessage());
         }

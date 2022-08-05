@@ -19,5 +19,11 @@ trait ApiValidation
             'is_merchant.*' => 'The is_merchant value must be 0 or 1',
         ]
     ];
+    public $loginForm = [
+        'rules' =>[
+            'email' => 'required|email',
+            'password' => 'required|min:5',
+        ]
+    ];
 
 }

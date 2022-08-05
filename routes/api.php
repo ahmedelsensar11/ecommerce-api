@@ -22,8 +22,6 @@ Route::prefix('auth')->group(function (){
 Route::middleware('auth:sanctum')->group(function (){
     //auth
     Route::prefix('auth')->group(function (){
-        Route::post('/verify-otp',[AuthController::class,'verify']);
-        Route::get('/resend-otp',[AuthController::class,'resend']);
         Route::get('/logout',[AuthController::class,'logout']);
     });
 });
