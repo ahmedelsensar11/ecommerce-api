@@ -5,7 +5,6 @@ namespace App\Http\Traits;
 
 trait ApiValidation
 {
-
     public $registerForm = [
         'rules' =>[
             'name' => 'required|min:2',
@@ -37,4 +36,21 @@ trait ApiValidation
         ]
     ];
 
+    public $addProductForm = [
+        'rules' =>[
+            'name' => 'required|min:2',
+            'desc' => 'required',
+            'quantity' => 'required|numeric',
+            'price' => 'required|numeric',
+        ]
+    ];
+
+    public $addMultiLangProductForm = [
+        'rules' =>[
+            'product_id' => 'required',
+            'locale' => 'required',
+            'attribute' => 'required',
+            'value' => 'required',
+        ]
+    ];
 }
