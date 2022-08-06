@@ -15,7 +15,7 @@ A simple laravel ecommerce api project.
     - a. Cart’s product prices.
     - b. Store VAT settings.
     - c. Store shipping cost.
-- response with final details invoice
+- response with final detailed invoice
 
 > **Hint:**  To avoid misunderstanding for me, The merchants can add products with multilingual names and descriptions and prices and (Plus point) merchant can adding with multible language for the same product .
 
