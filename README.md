@@ -17,7 +17,7 @@ A simple laravel ecommerce api project.
     - c. Store shipping cost.
 - response with final detailed invoice
 
-> **Hint:**  To avoid misunderstanding for me, The merchants can add products and (Plus point) merchant can adding with multible language for the same product .
+> **Hint:**  To avoid misunderstanding for me, The merchants can add products and (Plus point) merchant can adding details with multible language for the same product .
 
 ## Program design and archtecture :
 - the program foucses on back-end development
