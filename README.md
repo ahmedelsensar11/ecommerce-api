@@ -24,6 +24,10 @@ A simple laravel ecommerce api project.
 - developed with **laravel** framework
 - Object Oriented Designed
 - works with MySql as DBMS
+- used some database design patterns like [**EAV**](https://pbedn.github.io/post/2020-05-25-entity-attribute-value/) for adding multilanguage details for product.
+
+## API documentation :
+- Please Find This [**Documentation**](https://documenter.getpostman.com/view/9030518/VUjMnkDh) for the project.
 
 ## How to run the program :
 - clone program in your local repo
