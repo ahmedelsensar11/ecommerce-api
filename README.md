@@ -30,7 +30,7 @@ A simple laravel ecommerce api project.
 - you can use **XAMPP** control pannel to run program localy
 - start your **Apache** server from XAMPP
 - open the project folder in any **Editor** such as phpstorme,vscode
-- install vendor
+- run composer install
 - create database with name ecommerce_db
 - migrate the database tables
 - open API plateform like **Postman**
